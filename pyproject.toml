@@ -3,7 +3,7 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "atools"
+name = "atools-cli"
 version = "0.1.0"
 description = "Arne's CLI Tools"
 readme = "README.md"
