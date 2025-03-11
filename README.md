@@ -1,5 +1,7 @@
 # `atools` - Arne's CLI Tools
-<img alt="PyPI - Version" src="https://img.shields.io/pypi/v/atools-cli">
+<a href="https://pypi.org/project/atools-cli/" target="_blank">
+  <img alt="PyPI - Version" src="https://img.shields.io/pypi/v/atools-cli">
+</a>
 
 ## 📦 Installation
 
