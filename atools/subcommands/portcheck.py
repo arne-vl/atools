@@ -20,4 +20,4 @@ def handle_portcheck(args):
     """Handle the 'portcheck' command."""
     port_status = check_port(args.port)
     status_text = "free" if port_status else "occupied"
-    print(f"Port {args.port} is {status_text}.")
+print(f"Port {args.port} is {status_text}.")
