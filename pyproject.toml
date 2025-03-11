@@ -9,7 +9,9 @@ description = "Arne's CLI Tools"
 readme = "README.md"
 license = {file = "LICENSE"}
 authors = [{name = "Arne Van Looveren", email = "arne@arnevanlooveren.be"}]
-dependencies = []
+dependencies = [
+  "requests"
+]
 
 [project.scripts]
 atools = "atools.cli:main"
