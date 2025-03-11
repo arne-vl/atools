@@ -5,7 +5,7 @@
 
 You can install atools via PyPI:
 ```sh
-pip install atools
+pip install atools-cli
 ```
 
 ## 🚀 Features
