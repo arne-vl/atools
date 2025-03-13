@@ -38,7 +38,7 @@ var lineCounterCmd = &cobra.Command{
 			sort.Slice(fileLines, func(i, j int) bool {
 				return fileLines[i].lines > fileLines[j].lines
 			})
-			fmt.Println("Files sorted by line count:")
+			fmt.Println("\nFiles sorted by line count:")
 			for _, file := range fileLines {
 				fmt.Printf("%d\t%s\n", file.lines, file.path)
 			}

@@ -1,6 +1,20 @@
 # `atools` - Arne's CLI Tools
 ## 📦 Installation
-
+### Manual installation
+1. Clone the repository:
+```
+git clone https://github.com/arne-vl/atools-cli.git
+```
+2. Build & install the project:
+```
+cd atools-cli
+go build
+go install
+```
+3. Check command installation:
+```
+atools
+```
 
 ## 🚀 Features
 
