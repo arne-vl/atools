@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net"
 	"strconv"
+	"time"
 
 	"github.com/spf13/cobra"
 )
@@ -20,13 +21,14 @@ var portCheckCmd = &cobra.Command{
 			return
 		}
 
-		addr := fmt.Sprintf(":%s", port)
-		ln, err := net.Listen("tcp", addr)
+		timeout := time.Second
+		conn, err := net.DialTimeout("tcp", net.JoinHostPort("127.0.0.1", port), timeout)
 		if err != nil {
-			fmt.Printf("Port %s is occupied.\n", port)
-		} else {
 			fmt.Printf("Port %s is free.\n", port)
-			ln.Close()
+		}
+		if conn != nil {
+			defer conn.Close()
+			fmt.Printf("Port %s is occupied.\n", port)
 		}
 	},
 }
