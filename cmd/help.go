@@ -1,6 +1,3 @@
-/*
-Copyright © 2025 NAME HERE <EMAIL ADDRESS>
-*/
 package cmd
 
 const template = `{{with (or .Long .Short)}}{{. | trimTrailingWhitespaces}}{{end}}
