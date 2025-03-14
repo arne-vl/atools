@@ -2,19 +2,20 @@ package cmd
 
 import (
 	"fmt"
+	"io"
 	"net"
 	"os"
 
-	"github.com/spf13/cobra"
 	"net/http"
-	"io/ioutil"
+
+	"github.com/spf13/cobra"
 )
 
 // ipinfoCmd represents the ipinfo command
 var ipinfoCmd = &cobra.Command{
 	Use:   "ipinfo",
 	Short: "Display the IP info of the current machine",
-	Args: cobra.ExactArgs(0),
+	Args:  cobra.ExactArgs(0),
 	Run: func(cmd *cobra.Command, args []string) {
 		privateIP, err := getPrivateIP()
 		if err != nil {
@@ -68,7 +69,7 @@ func getPublicIP() (string, error) {
 	}
 	defer resp.Body.Close()
 
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return "", err
 	}

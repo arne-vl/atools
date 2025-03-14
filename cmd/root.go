@@ -1,10 +1,13 @@
 package cmd
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/spf13/cobra"
 )
+
+const version = "1.1.0"
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -33,5 +36,15 @@ func Execute() {
 }
 
 func init() {
-	// TODO: add version command
+	rootCmd.AddCommand(versionCmd)
+}
+
+// versionCmd represents the version command
+var versionCmd = &cobra.Command{
+	Use:   "version",
+	Short: "Print the current version",
+	Args:  cobra.ExactArgs(0),
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Printf("atools version: %s", version)
+	},
 }
