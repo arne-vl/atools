@@ -1,13 +1,19 @@
 # `atools` - Arne's CLI Tools
-<a href="https://pypi.org/project/atools-cli/" target="_blank">
-  <img alt="PyPI - Version" src="https://img.shields.io/pypi/v/atools-cli">
-</a>
-
 ## 📦 Installation
-
-You can install atools via PyPI:
-```sh
-pip install atools-cli
+### Manual installation
+1. Clone the repository:
+```
+git clone https://github.com/arne-vl/atools-cli.git
+```
+2. Build & install the project:
+```
+cd atools-cli
+go build
+go install
+```
+3. Check command installation:
+```
+atools
 ```
 
 ## 🚀 Features
