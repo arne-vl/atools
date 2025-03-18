@@ -96,7 +96,7 @@ func countLines(filename string) (int, error) {
 
 func init() {
 	lineCounterCmd.Flags().BoolVarP(&listFiles, "list", "l", false, "List files sorted by line count")
-	lineCounterCmd.Flags().StringVarP(&directory, "directory", "d", "", "Specify directory (default: current directory)")
+	lineCounterCmd.Flags().StringVarP(&directory, "directory", "d", "", "Directory to scan (default: current directory)")
 	lineCounterCmd.Flags().BoolVarP(&recursive, "recursive", "r", false, "Enable recursive search")
 	rootCmd.AddCommand(lineCounterCmd)
 }
