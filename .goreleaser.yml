@@ -1,0 +1,30 @@
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: cli
+    main: ./main.go
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+  - format: tar.gz
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    files:
+      - LICENSE
+      - README.md
+      - CHANGELOG.md
+      - completions/*
+    replacements:
+      darwin: macOS
+
+release:
+  github:
+    owner: arne-vl
+    name: atools
