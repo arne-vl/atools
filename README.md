@@ -3,11 +3,11 @@
 ### Manual installation
 1. Clone the repository:
 ```
-git clone https://github.com/arne-vl/atools-cli.git
+git clone https://github.com/arne-vl/atools.git
 ```
 2. Build & install the project:
 ```
-cd atools-cli
+cd atools
 go build
 go install
 ```
