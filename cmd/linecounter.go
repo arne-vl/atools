@@ -26,6 +26,8 @@ var lineCounterCmd = &cobra.Command{
 			directory = "."
 		}
 
+		ext = strings.TrimPrefix(ext, ".")
+
 		fileLines, totalLines, err := countLinesInFiles(directory, ext, recursive)
 		if err != nil {
 			fmt.Println("Error:", err)
