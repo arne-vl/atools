@@ -3,7 +3,8 @@ package cmd
 const template = `{{with (or .Long .Short)}}{{. | trimTrailingWhitespaces}}{{end}}
 
 Usage:{{if .Runnable}}
-  {{.UseLine}}{{end}}{{if .HasAvailableSubCommands}}{{end}} {{if gt (len .Aliases) 0}}
+  {{.UseLine}}{{end}}{{if .HasAvailableSubCommands}}
+  atools [subcommand] ...{{end}} {{if gt (len .Aliases) 0}}
 
 Aliases:
   {{.NameAndAliases}}{{end}}{{if .HasExample}}
