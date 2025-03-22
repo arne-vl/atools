@@ -1,6 +1,6 @@
 # `atools` - Arne's CLI Tools
 ## 📦 Installation
-### Manual installation
+### Manual build
 1. Clone the repository:
 ```
 git clone https://github.com/arne-vl/atools.git
@@ -8,6 +8,7 @@ git clone https://github.com/arne-vl/atools.git
 2. Build & install the project:
 ```
 cd atools
+go mod tidy
 go build
 go install
 ```
