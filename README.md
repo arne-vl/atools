@@ -4,7 +4,7 @@
 ```sh
 curl https://raw.githubusercontent.com/arne-vl/atools/refs/heads/main/linux_installer.sh | sh
 ```
-### Manual installation
+### Manual build
 1. Clone the repository:
 ```
 git clone https://github.com/arne-vl/atools.git
@@ -12,6 +12,7 @@ git clone https://github.com/arne-vl/atools.git
 2. Build & install the project:
 ```
 cd atools
+go mod tidy
 go build
 go install
 ```
