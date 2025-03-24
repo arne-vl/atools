@@ -1,5 +1,9 @@
 # `atools` - Arne's CLI Tools
 ## 📦 Installation
+### 🐧 Linux
+```sh
+curl https://raw.githubusercontent.com/arne-vl/atools/refs/heads/main/linux_installer.sh | sh
+```
 ### Manual build
 1. Clone the repository:
 ```
