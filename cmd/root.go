@@ -22,8 +22,8 @@ var rootCmd = &cobra.Command{
 
 Version: %s
 
-Arne's CLI Tools contains some fun / useful commands.
-For suggestions: open an issue at https://github.com/arne-vl/atools-cli.
+Arne's CLI Tools contain some fun / useful commands.
+For suggestions: open an issue at https://github.com/arne-vl/atools.
 
 Created by Arne Van Looveren.`, version),
 }
@@ -47,6 +47,6 @@ var versionCmd = &cobra.Command{
 	Short: "Print the current version",
 	Args:  cobra.ExactArgs(0),
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Printf("atools version: %s", version)
+		fmt.Printf("atools version: %s\n", version)
 	},
 }
