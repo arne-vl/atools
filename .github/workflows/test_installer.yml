@@ -1,0 +1,20 @@
+name: Test Installer
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  install-linux:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install atools
+        run: curl https://raw.githubusercontent.com/arne-vl/atools/refs/heads/main/linux_installer.sh | sh
+
+      - name: Verify installation
+        run: command -v atools
