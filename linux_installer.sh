@@ -4,14 +4,14 @@ echo "Welcome to the atools linux installer!"
 echo
 LATEST_VERSION=$(curl -s https://api.github.com/repos/arne-vl/atools/tags | grep "name" | sed -E 's/.*v([^"]+)".*/\1/' | head -n 1)
 
-if command -v > /dev/null; then
+if command -v atools > /dev/null; then
         echo "atools already installed"
         echo "Checking version..."
         CURRENT_VERSION=$(atools version | sed -n 's/.*: \([0-9.]*\)/\1/p')
 
         if [ $CURRENT_VERSION != $LATEST_VERSION ]; then
                 echo "Current version:" $CURRENT_VERSION
-                echo "Updateing to:" $LATEST_VERSION
+                echo "Updating to:" $LATEST_VERSION
         else
                 echo "Most recent version is installed, aborting..."
                 exit 0
@@ -21,7 +21,7 @@ fi
 echo
 
 OS=$(uname | tr "[:upper:]" "[:lower:]")
-echo 'Found OS:' $OS
+echo "Found OS:" $OS
 if [ "$OS" != "linux" ]; then
         echo "Operating system is not Linux. Aborting installer..."
         exit 1
