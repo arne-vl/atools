@@ -1,5 +1,5 @@
 builds:
-  - main: ./cmd/atools
+  - main: .
     ldflags:
       - -X 'github.com/arne-vl/atools/cmd.version={{.Tag}}'
 
