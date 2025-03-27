@@ -1,7 +1,7 @@
 [changelog]
 header = "# Changelog\n\nAll notable changes to this project will be documented here.\n"
 body = """
-## [{{version}}] - {{date}}
+## [{{version}}] - {{date | default("today")}}
 
 {% for group, commits in commits | group_by(attribute="group") %}
 ### {{ group | upper_first }}
