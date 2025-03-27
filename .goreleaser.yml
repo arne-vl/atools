@@ -1,0 +1,8 @@
+builds:
+  - main: ./cmd/atools
+    ldflags:
+      - -X 'github.com/arne-vl/atools/cmd.version={{.Tag}}'
+
+announce:
+  discord:
+    enabled: true

@@ -1,0 +1,17 @@
+[changelog]
+header = "# Changelog\n\nAll notable changes to this project will be documented here.\n"
+body = """
+## [{{version}}] - {{date}}
+
+{% for group, commits in commits | group_by(attribute="group") %}
+### {{ group | upper_first }}
+{% for commit in commits %}
+- {{ commit.message }} ([{{ commit.id | truncate(length=7) }}])
+{% endfor %}
+{% endfor %}
+"""
+footer = "\nGenerated automatically by git-cliff."
+
+[git]
+conventional_commits = true
+tag_pattern = "v[0-9]*"
