@@ -6,7 +6,7 @@ body = """
 {% for group, commits in commits | group_by(attribute="group") %}
 ### {{ group | upper_first }}
 {% for commit in commits %}
-- {{ commit.message }} ([{{ commit.id | truncate(length=7) }}])
+- {{ commit.message }}
 {% endfor %}
 {% endfor %}
 """
@@ -16,11 +16,11 @@ footer = "\nGenerated automatically by git-cliff."
 conventional_commits = true
 tag_pattern = "v[0-9]*"
 commit_parsers = [
-    { message = "^feat", group = "Features"},
-    { message = "^fix", group = "Bug Fixes"},
-    { message = "^doc", group = "Documentation"},
-    { message = "^perf", group = "Performance"},
-    { message = "^refactor", group = "Refactor"},
-    { message = "^style", group = "Styling"},
-    { message = "^test", group = "Testing"},
+    { message = "^feat", group = "🚀 Features"},
+    { message = "^fix", group = "🐛 Bug Fixes"},
+    { message = "^doc", group = "📃 Documentation"},
+    { message = "^perf", group = "🚤 Performance"},
+    { message = "^refactor", group = "🚜 Refactor"},
+    { message = "^style", group = "🖌️ Styling"},
+    { message = "^test", group = "⚙️ Testing"},
 ]
