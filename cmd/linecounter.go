@@ -12,6 +12,7 @@ import (
 )
 
 var listFiles bool   // Flag to list files by line count
+var spreadFiles bool // Flag to show the amount of files
 var directory string // Flag to specify directory
 var recursive bool   // Flag to enable recursive search
 
@@ -35,6 +36,10 @@ var lineCounterCmd = &cobra.Command{
 		}
 
 		fmt.Printf("Total lines in *.%s files: %d\n", ext, totalLines)
+
+		if spreadFiles {
+			fmt.Println("Spread over", len(fileLines), "file(s)")
+		}
 
 		if listFiles {
 			sort.Slice(fileLines, func(i, j int) bool {
@@ -98,6 +103,7 @@ func countLines(filename string) (int, error) {
 
 func init() {
 	lineCounterCmd.Flags().BoolVarP(&listFiles, "list", "l", false, "List files sorted by line count")
+	lineCounterCmd.Flags().BoolVarP(&spreadFiles, "spread", "s", false, "Show amount of files scanned")
 	lineCounterCmd.Flags().StringVarP(&directory, "directory", "d", "", "Directory to scan (default: current directory)")
 	lineCounterCmd.Flags().BoolVarP(&recursive, "recursive", "r", false, "Enable recursive search")
 	rootCmd.AddCommand(lineCounterCmd)
