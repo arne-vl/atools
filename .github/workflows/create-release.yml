@@ -23,23 +23,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install git-cliff
+      - name: Tag
         run: |
-          GIT_CLIFF_LATEST_VERSION=$(curl -s https://api.github.com/repos/orhun/git-cliff/tags | grep "name" | sed -E 's/.*v([^"]+)".*/\1/' | head -n 1)
-          curl -sSL https://github.com/orhun/git-cliff/releases/latest/download/git-cliff-${GIT_CLIFF_LATEST_VERSION}-x86_64-unknown-linux-gnu.tar.gz | tar xz
-          sudo mv git-cliff-${GIT_CLIFF_LATEST_VERSION}/git-cliff /usr/local/bin/git-cliff
-
-      - name: Generate Changelog
-        run: git-cliff -t ${{ github.event.inputs.version }} -o CHANGELOG.md
-
-      - name: Commit Changelog & Tag
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "actions@github.com"
-          git checkout -b release-${{ github.event.inputs.version }}  # Create a new release branch
-          git add CHANGELOG.md
-          git commit -m "chore(release): ${{ github.event.inputs.version }}"
-          git push origin release-${{ github.event.inputs.version }}  # Push the release branch
           git tag ${{ github.event.inputs.version }}
           git push --tags
 

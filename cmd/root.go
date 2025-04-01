@@ -4,9 +4,10 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/joho/godotenv"
 	"github.com/spf13/cobra"
 )
+
+const version = "0.2.3"
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -24,7 +25,7 @@ Version: %s
 Arne's CLI Tools contain some fun / useful commands.
 For suggestions: open an issue at https://github.com/arne-vl/atools.
 
-Created by Arne Van Looveren.`, getVersion()),
+Created by Arne Van Looveren.`, version),
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
@@ -46,11 +47,6 @@ var versionCmd = &cobra.Command{
 	Short: "Print the current version",
 	Args:  cobra.ExactArgs(0),
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Printf("atools version: %s\n", getVersion())
+		fmt.Printf("atools version: %s\n", version)
 	},
-}
-
-func getVersion() string {
-	godotenv.Load(".env")
-	return os.Getenv("VERSION")
 }
