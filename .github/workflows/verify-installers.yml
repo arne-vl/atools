@@ -1,0 +1,39 @@
+name: Verify Installers
+
+on:
+  release:
+    types: [created]
+
+permissions:
+  contents: read
+
+jobs:
+  verify-linux:
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        arch: [amd64, arm64, 386]
+    runs-on: ${{ matrix.os }}
+    name: Verify linux ${{ matrix.arch }}
+
+    steps:
+      - name: Install atools
+        run: |
+          curl https://raw.githubusercontent.com/arne-vl/atools/refs/heads/main/linux_installer.sh | sh
+      - name: Verify installation
+        run: |
+          command -v atools
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Verify Versions
+        run: |
+          LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1) | sed 's/^v//')
+          ATOOLS_VERSION=$(atools version | sed 's/atools version: //')
+
+          if echo $ATOOLS_VERSION | grep -q $LATEST_TAG; then
+            echo "Version matches latest tag."
+          else
+            echo "Version does not match latest tag."
+            exit 1
+          fi
