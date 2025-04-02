@@ -171,7 +171,9 @@ func constructFilesAndDirs(config *Config) error {
 		if err := os.MkdirAll(processedDir, os.ModePerm); err != nil {
 			return fmt.Errorf("failed to create directory %s: %w", processedDir, err)
 		}
-		fmt.Println("Created directory:", processedDir)
+		if !silent {
+			fmt.Println("Created directory:", processedDir)
+		}
 	}
 
 	for _, file := range config.Construction.Files {
@@ -186,7 +188,9 @@ func constructFilesAndDirs(config *Config) error {
 		if err := os.WriteFile(processedPath, []byte(processedContent), 0644); err != nil {
 			return fmt.Errorf("failed to create file %s: %w", processedPath, err)
 		}
-		fmt.Println("Created file:", processedPath)
+		if !silent {
+			fmt.Println("Created file:", processedPath)
+		}
 	}
 
 	return nil
