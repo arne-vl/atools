@@ -49,7 +49,7 @@ jobs:
 
       - name: Set version
         run: |
-          NEW_VERSION=$(${{ github.event.inputs.version }} | sed 's/^v//')
+          NEW_VERSION=$(echo "${{ github.event.inputs.version }}" | sed 's/^v//')
           echo "VERSION=$NEW_VERSION" >> .env
 
       - name: Run GoReleaser
