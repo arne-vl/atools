@@ -17,6 +17,7 @@ jobs:
         arch: [amd64, arm64, 386]
     runs-on: ${{ matrix.os }}
     name: Verify linux ${{ matrix.arch }}
+    environment: installers
 
     steps:
       - name: Install atools
@@ -30,8 +31,8 @@ jobs:
 
       - name: Verify Versions
         run: |
-          LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1) | sed 's/^v//')
-          ATOOLS_VERSION=$(atools version | sed 's/atools version: //')
+          LATEST_TAG=$(curl -s https://api.github.com/repos/arne-vl/atools/tags | grep "name" | sed -E 's/.*v([^"]+)".*/\1/' | head -n 1)
+          ATOOLS_VERSION=$(atools version | sed -n 's/.*: \([0-9.]*\)/\1/p')
 
           if echo $ATOOLS_VERSION | grep -q $LATEST_TAG; then
             echo "Version matches latest tag."
