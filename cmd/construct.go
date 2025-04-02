@@ -98,10 +98,15 @@ func constructFilesAndDirs(config *Config) error {
 
 // constructCmd represents the construct command
 var constructCmd = &cobra.Command{
-	Use:   "construct",
+	Use:   "construct [blueprint]",
 	Short: "Construct your blueprints",
 
 	Run: func(cmd *cobra.Command, args []string) {
+		if len(args) == 0 {
+			fmt.Println("Please provide a blueprint to construct")
+			os.Exit(1)
+		}
+
 		filename, err := getConfigPath(args[0])
 		if err != nil {
 			fmt.Println("Error locating blueprint:", err)
@@ -122,6 +127,6 @@ var constructCmd = &cobra.Command{
 }
 
 func init() {
-	constructCmd.Flags().BoolVarP(&silent, "silent", "s", false, "Silent printing what is created")
+	constructCmd.Flags().BoolVarP(&silent, "silent", "s", true, "Silent printing what is created")
 	rootCmd.AddCommand(constructCmd)
 }
