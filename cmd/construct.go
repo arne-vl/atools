@@ -74,7 +74,7 @@ func constructFilesAndDirs(config *Config) error {
 		if err := os.MkdirAll(dir, os.ModePerm); err != nil {
 			return fmt.Errorf("failed to create directory %s: %w", dir, err)
 		}
-		if silent {
+		if !silent {
 			fmt.Println("Created directory:", dir)
 		}
 	}
@@ -88,7 +88,7 @@ func constructFilesAndDirs(config *Config) error {
 		if err := os.WriteFile(file.Path, []byte(file.Content), 0644); err != nil {
 			return fmt.Errorf("failed to create file %s: %w", file.Path, err)
 		}
-		if silent {
+		if !silent {
 			fmt.Println("Created file:", file.Path)
 		}
 	}
@@ -127,6 +127,6 @@ var constructCmd = &cobra.Command{
 }
 
 func init() {
-	constructCmd.Flags().BoolVarP(&silent, "silent", "s", true, "Silent printing what is created")
+	constructCmd.Flags().BoolVarP(&silent, "silent", "s", false, "Silent printing what is created")
 	rootCmd.AddCommand(constructCmd)
 }
