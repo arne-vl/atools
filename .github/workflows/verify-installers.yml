@@ -36,7 +36,11 @@ jobs:
 
           if echo $ATOOLS_VERSION | grep -q $LATEST_TAG; then
             echo "Version matches latest tag."
+            echo "Latest Tag:" $LATEST_TAG
+            echo "atools version:" $ATOOLS_VERSION
           else
             echo "Version does not match latest tag."
+            echo "Latest Tag:" $LATEST_TAG
+            echo "atools version:" $ATOOLS_VERSION
             exit 1
           fi
