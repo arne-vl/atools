@@ -1,8 +1,10 @@
 name: Verify Installers
 
 on:
-  release:
-    types: [created]
+  workflow_run:
+    workflows: [Create Release]
+    types:
+      - completed
 
 permissions:
   contents: read
