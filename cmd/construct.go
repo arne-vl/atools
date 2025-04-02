@@ -15,14 +15,15 @@ import (
 )
 
 var silent bool // Flag to silent "created" print
+var list bool   // Flag to list the available blueprints
 
 var presetVariables = []string{"year", "quarter", "month", "monthnumber", "weeknumber", "day", "daynumber", "hour", "minute"}
 
 type Config struct {
-	Construction struct {
+	Blueprint struct {
 		Directories []string `yaml:"directories"`
 		Files       []File   `yaml:"files"`
-	} `yaml:"construction"`
+	} `yaml:"blueprint"`
 }
 
 type File struct {
@@ -158,15 +159,15 @@ func applyBlueprint(content string, variables map[string]string) string {
 
 func constructFilesAndDirs(config *Config) error {
 	var allContent []string
-	allContent = append(allContent, config.Construction.Directories...)
-	for _, file := range config.Construction.Files {
+	allContent = append(allContent, config.Blueprint.Directories...)
+	for _, file := range config.Blueprint.Files {
 		allContent = append(allContent, file.Path)
 		allContent = append(allContent, file.Content)
 	}
 
 	variables := promptForVariables(strings.Join(allContent, "\n"))
 
-	for _, dir := range config.Construction.Directories {
+	for _, dir := range config.Blueprint.Directories {
 		processedDir := applyBlueprint(dir, variables)
 		if err := os.MkdirAll(processedDir, os.ModePerm); err != nil {
 			return fmt.Errorf("failed to create directory %s: %w", processedDir, err)
@@ -176,7 +177,7 @@ func constructFilesAndDirs(config *Config) error {
 		}
 	}
 
-	for _, file := range config.Construction.Files {
+	for _, file := range config.Blueprint.Files {
 		processedPath := applyBlueprint(file.Path, variables)
 		fileDir := filepath.Dir(processedPath)
 		if err := os.MkdirAll(fileDir, os.ModePerm); err != nil {
@@ -223,5 +224,6 @@ var constructCmd = &cobra.Command{
 
 func init() {
 	constructCmd.Flags().BoolVarP(&silent, "silent", "s", false, "Silent printing what is created")
+	constructCmd.Flags().BoolVarP(&list, "list", "l", false, "List the available blueprints")
 	rootCmd.AddCommand(constructCmd)
 }
