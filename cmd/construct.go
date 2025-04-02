@@ -11,6 +11,8 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
+var silent bool // Flag to silent "created" print
+
 type Config struct {
 	Construction struct {
 		Directories []string `yaml:"directories"`
@@ -72,7 +74,9 @@ func constructFilesAndDirs(config *Config) error {
 		if err := os.MkdirAll(dir, os.ModePerm); err != nil {
 			return fmt.Errorf("failed to create directory %s: %w", dir, err)
 		}
-		fmt.Println("Created directory:", dir)
+		if silent {
+			fmt.Println("Created directory:", dir)
+		}
 	}
 
 	for _, file := range config.Construction.Files {
@@ -84,7 +88,9 @@ func constructFilesAndDirs(config *Config) error {
 		if err := os.WriteFile(file.Path, []byte(file.Content), 0644); err != nil {
 			return fmt.Errorf("failed to create file %s: %w", file.Path, err)
 		}
-		fmt.Println("Created file:", file.Path)
+		if silent {
+			fmt.Println("Created file:", file.Path)
+		}
 	}
 
 	return nil
@@ -116,5 +122,6 @@ var constructCmd = &cobra.Command{
 }
 
 func init() {
+	constructCmd.Flags().BoolVarP(&silent, "silent", "s", false, "Silent printing what is created")
 	rootCmd.AddCommand(constructCmd)
 }
