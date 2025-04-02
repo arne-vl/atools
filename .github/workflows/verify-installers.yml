@@ -17,6 +17,7 @@ jobs:
         arch: [amd64, arm64, 386]
     runs-on: ${{ matrix.os }}
     name: Verify linux ${{ matrix.arch }}
+    environment: installers
 
     steps:
       - name: Install atools

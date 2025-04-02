@@ -47,11 +47,6 @@ jobs:
         with:
           go-version: '1.24.1'
 
-      - name: Set version
-        run: |
-          NEW_VERSION=$(echo "${{ github.event.inputs.version }}" | sed 's/^v//')
-          echo "VERSION=$NEW_VERSION" >> .env
-
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v6
         with:
