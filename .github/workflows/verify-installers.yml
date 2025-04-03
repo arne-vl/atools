@@ -17,17 +17,18 @@ jobs:
         arch: [amd64, arm64, 386]
     runs-on: ${{ matrix.os }}
     name: Verify linux ${{ matrix.arch }}
-    environment: installers
+
+    environment:
+      name: installers
 
     steps:
       - name: Install atools
         run: |
           curl https://raw.githubusercontent.com/arne-vl/atools/refs/heads/main/linux_installer.sh | sh
+
       - name: Verify installation
         run: |
           command -v atools
-      - name: Checkout repository
-        uses: actions/checkout@v2
 
       - name: Verify Versions
         run: |
