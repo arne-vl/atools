@@ -19,6 +19,30 @@ var list bool   // Flag to list the available blueprints
 
 var presetVariables = []string{"year", "quarter", "month", "monthnumber", "weeknumber", "day", "daynumber", "hour", "minute"}
 
+// constructCmd represents the construct command
+var constructCmd = &cobra.Command{
+	Use:   "construct [blueprint]",
+	Short: "Construct your blueprints",
+	Run: func(cmd *cobra.Command, args []string) {
+		filename, err := getConfigPath(args[0])
+		if err != nil {
+			fmt.Println("Error locating config file:", err)
+			os.Exit(1)
+		}
+
+		config, err := parseYAMLFile(filename)
+		if err != nil {
+			fmt.Println("Error parsing YAML:", err)
+			os.Exit(1)
+		}
+
+		if err := constructFilesAndDirs(config); err != nil {
+			fmt.Println("Error constructing directories and files:", err)
+			os.Exit(1)
+		}
+	},
+}
+
 type Config struct {
 	Blueprint struct {
 		Directories []string `yaml:"directories"`
@@ -195,31 +219,6 @@ func constructFilesAndDirs(config *Config) error {
 	}
 
 	return nil
-}
-
-// constructCmd represents the construct command
-var constructCmd = &cobra.Command{
-	Use:   "construct [blueprint]",
-	Short: "Construct your blueprints",
-
-	Run: func(cmd *cobra.Command, args []string) {
-		filename, err := getConfigPath(args[0])
-		if err != nil {
-			fmt.Println("Error locating config file:", err)
-			os.Exit(1)
-		}
-
-		config, err := parseYAMLFile(filename)
-		if err != nil {
-			fmt.Println("Error parsing YAML:", err)
-			os.Exit(1)
-		}
-
-		if err := constructFilesAndDirs(config); err != nil {
-			fmt.Println("Error constructing directories and files:", err)
-			os.Exit(1)
-		}
-	},
 }
 
 func init() {
