@@ -224,6 +224,5 @@ var constructCmd = &cobra.Command{
 
 func init() {
 	constructCmd.Flags().BoolVarP(&silent, "silent", "s", false, "Silent printing what is created")
-	constructCmd.Flags().BoolVarP(&list, "list", "l", false, "List the available blueprints")
 	rootCmd.AddCommand(constructCmd)
 }
