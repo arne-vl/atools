@@ -1,4 +1,6 @@
 # `atools` - Arne's CLI Tools
+Built using [cobra-cli](https://github.com/spf13/cobra-cli).
+
 ## 📦 Installation
 ### 🐧 Linux
 ```sh
