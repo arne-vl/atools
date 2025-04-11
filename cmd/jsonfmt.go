@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"io"
 
 	"github.com/spf13/cobra"
 )
@@ -14,8 +15,13 @@ var compact bool // Flag to indicate if the output should be compact
 var jsonfmtCmd = &cobra.Command{
 	Use:   "jsonfmt [document]",
 	Short: "Pretty print JSON",
-	Args:  cobra.ExactArgs(1),
+	Args:  cobra.MaximumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
+	var fileContent string
+    	var err error
+
+       	if len(args) == 1 {
+		// Read from file if an argument is provided
 		filePath := args[0]
 
 		if _, err := os.Stat(filePath); os.IsNotExist(err) {
@@ -23,16 +29,31 @@ var jsonfmtCmd = &cobra.Command{
 			return
 		}
 
-		fileContent, err := readFileContent(filePath)
-		if err != nil {
-			fmt.Println("Error:", err)
-			return
+		fileContent, err = readFileContent(filePath)
+			if err != nil {
+				fmt.Println("Error:", err)
+				return
+			}
+		} else {
+			// Read from stdin if no argument is provided
+			stat, _ := os.Stdin.Stat()
+			if (stat.Mode() & os.ModeCharDevice) != 0 {
+				fmt.Println("Error: No input provided. Provide a file or pipe JSON data.")
+				return
+			}
+
+			stdinContent, err := io.ReadAll(os.Stdin)
+			if err != nil {
+				fmt.Println("Error reading from stdin:", err)
+				return
+			}
+			fileContent = string(stdinContent)
 		}
 
-        err = prettyPrintJSON(fileContent)
-        if err != nil {
-            fmt.Println("Error:", err)
-        }
+		err = prettyPrintJSON(fileContent)
+		if err != nil {
+			fmt.Println("Error:", err)
+		}
     },
 }
 
