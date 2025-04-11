@@ -65,9 +65,9 @@ echo "Creating config directory..."
 if [ ! -f ~/.config/atools/example.yml ]; then
     mkdir -p ~/.config/atools/blueprints
     cat <<EOF > ~/.config/atools/blueprints/example.yml
-# Example config file for atools
-# This file is used to configure atools
-# You can find more information about the config file format here:
+# Example config file for atools construct.
+# This file is used to configure an atools blueprint for the construct command.
+# You can find more information about the blueprint file format here:
 # https://atools.arnevanlooveren.be/docs
 
 blueprint:
