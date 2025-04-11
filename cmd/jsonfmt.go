@@ -8,7 +8,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var compact bool
+var compact bool // Flag to indicate if the output should be compact
 
 // jsonfmtCmd represents the jsonfmt command
 var jsonfmtCmd = &cobra.Command{
@@ -17,6 +17,12 @@ var jsonfmtCmd = &cobra.Command{
 	Args:  cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		filePath := args[0]
+
+		if _, err := os.Stat(filePath); os.IsNotExist(err) {
+			fmt.Println("Error: File does not exist")
+			return
+		}
+
 		fileContent, err := readFileContent(filePath)
 		if err != nil {
 			fmt.Println("Error:", err)
