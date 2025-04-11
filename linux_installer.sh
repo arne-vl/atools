@@ -68,7 +68,7 @@ if [ ! -f ~/.config/atools/example.yml ]; then
 # Example config file for atools construct.
 # This file is used to configure an atools blueprint for the construct command.
 # You can find more information about the blueprint file format here:
-# https://atools.arnevanlooveren.be/docs
+# https://atools.arnevanlooveren.be/#docs
 
 blueprint:
   directories:
