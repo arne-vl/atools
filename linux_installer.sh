@@ -69,6 +69,7 @@ if [ ! -f ~/.config/atools/example.yml ]; then
 # This file is used to configure atools
 # You can find more information about the config file format here:
 # https://atools.arnevanlooveren.be/docs
+
 blueprint:
   directories:
     - example
