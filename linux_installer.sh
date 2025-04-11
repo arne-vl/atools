@@ -60,6 +60,26 @@ echo "Unpacking..."
 tar -xzf $FILE_PATH -C /tmp
 echo "Installing..."
 sudo mv /tmp/atools /bin/atools
+
+echo "Creating config directory..."
+if [ ! -f ~/.config/atools/example.yml ]; then
+    mkdir -p ~/.config/atools/blueprints
+    cat <<EOF > ~/.config/atools/blueprints/example.yml
+# Example config file for atools
+# This file is used to configure atools
+# You can find more information about the config file format here:
+# https://atools.arnevanlooveren.be/docs
+blueprint:
+  directories:
+    - example
+  files:
+    - name: example.txt
+      content: |
+        This is an example file.
+        You can use this file to test atools.
+EOF
+fi
+
 echo "Install successful!"
 
 echo
