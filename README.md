@@ -1,5 +1,5 @@
 # `atools` - Arne's CLI Tools
-![GitHub Release](https://img.shields.io/github/v/release/arne-vl/atools)
+![GitHub Release](https://img.shields.io/github/v/release/arne-vl/atools?color=%237c3aed)
 
 
 ## 🚀 Quick Install
