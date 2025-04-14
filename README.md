@@ -1,30 +1,12 @@
 # `atools` - Arne's CLI Tools
-## 📦 Installation
+![GitHub Release](https://img.shields.io/github/v/release/arne-vl/atools?color=%237c3aed)
+
+
+## 🚀 Quick Install
 ### 🐧 Linux
 ```sh
 curl -fsSL https://raw.githubusercontent.com/arne-vl/atools/refs/heads/main/linux_installer.sh | sh
 ```
-### Manual build
-1. Clone the repository:
-```
-git clone https://github.com/arne-vl/atools.git
-```
-2. Build & install the project:
-```
-cd atools
-go mod tidy
-go build
-go install
-```
-3. Check command installation:
-```
-atools
-```
 
-## 🚀 Features
-
-- `linecounter` - Count the number of lines for a specified file extension.
-- `portcheck` - Check if a given port is occupied or free.
-- `ipinfo` - Get your hostname, private ip and public ip.
-
-(More features coming soon!)
+## 📚 Documentation
+Check our [website](https://atools.arnevanlooveren.be)
