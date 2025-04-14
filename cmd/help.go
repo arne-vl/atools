@@ -1,6 +1,6 @@
 package cmd
 
-const template = `{{with (or .Long .Short)}}{{. | trimTrailingWhitespaces}}{{end}}
+const helpTemplate = `{{with (or .Long .Short)}}{{. | trimTrailingWhitespaces}}{{end}}
 
 Usage:{{if .Runnable}}
   {{.UseLine}}{{end}}{{if .HasAvailableSubCommands}}
@@ -28,5 +28,5 @@ Use "{{.CommandPath}} [command] --help" for more information about a command.{{e
 `
 
 func init() {
-	rootCmd.SetHelpTemplate(template)
+	rootCmd.SetHelpTemplate(helpTemplate)
 }
