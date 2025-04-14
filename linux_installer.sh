@@ -63,6 +63,8 @@ tar -xzf $FILE_PATH -C /tmp
 echo "Installing..."
 sudo mv /tmp/atools /bin/atools
 
+echo
+
 echo "Creating config directory..."
 if [ ! -f ~/.config/atools/example.yml ]; then
     mkdir -p ~/.config/atools/blueprints
@@ -82,6 +84,8 @@ blueprint:
         You can use this file to test atools.
 EOF
 fi
+
+echo
 
 echo "Install successful!"
 
