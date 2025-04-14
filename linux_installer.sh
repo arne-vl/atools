@@ -14,13 +14,12 @@ if command -v atools > /dev/null; then
         if [ $CURRENT_VERSION != $LATEST_VERSION ]; then
                 echo "Current version:" $CURRENT_VERSION
                 echo "Updating to:" $LATEST_VERSION
+                echo
         else
                 echo "Most recent version is installed, aborting..."
                 exit 0
         fi
 fi
-
-echo
 
 OS=$(uname | tr "[:upper:]" "[:lower:]")
 echo "Found OS:" $OS
