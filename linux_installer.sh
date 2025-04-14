@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e # Exit on error
+
 echo "Welcome to the atools linux installer!"
 echo
 LATEST_VERSION=$(curl -s https://api.github.com/repos/arne-vl/atools/tags | grep "name" | sed -E 's/.*v([^"]+)".*/\1/' | sort -Vr | head -n 1)
