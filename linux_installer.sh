@@ -77,7 +77,7 @@ blueprint:
   directories:
     - example
   files:
-    - name: example/example.txt
+    - path: example/example.txt
       content: |
         This is an example file.
         You can use this file to test atools.
