@@ -9,4 +9,4 @@ curl -fsSL https://raw.githubusercontent.com/arne-vl/atools/refs/heads/main/linu
 ```
 
 ## 📚 Documentation
-Check our [website](https://atools.arnevanlooveren.be)
+Check our [website](https://atools.arnevanlooveren.be).
