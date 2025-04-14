@@ -2,7 +2,7 @@
 
 echo "Welcome to the atools linux installer!"
 echo
-LATEST_VERSION=$(curl -s https://api.github.com/repos/arne-vl/atools/tags | grep "name" | sed -E 's/.*v([^"]+)".*/\1/' | sort -Vr | head -n 1)
+LATEST_VERSION=$(curl -s https://api.github.com/repos/arne-vl/atools/tags | grep '"name":' | sed -E 's/.*"v?([^"]+)".*/\1/' | sort -Vr | head -n 1)
 
 if command -v atools > /dev/null; then
         echo "atools already installed"
