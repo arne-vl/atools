@@ -222,6 +222,6 @@ func constructFilesAndDirs(config *Config) error {
 }
 
 func init() {
-	constructCmd.Flags().BoolVarP(&silent, "silent", "s", false, "Silent printing what is created")
+	constructCmd.Flags().BoolVarP(&silent, "silent", "s", false, "Silent mode (no output)")
 	rootCmd.AddCommand(constructCmd)
 }
