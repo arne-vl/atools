@@ -24,7 +24,7 @@ jobs:
     steps:
       - name: Install atools
         run: |
-          curl https://raw.githubusercontent.com/arne-vl/atools/refs/heads/main/linux_installer.sh | sh
+          curl https://atools.arnevanlooveren.be/installers/linux.sh | sh
 
       - name: Verify installation
         run: |
