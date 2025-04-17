@@ -5,7 +5,7 @@
 ## 🚀 Quick Install
 ### 🐧 Linux
 ```sh
-curl -fsSL https://raw.githubusercontent.com/arne-vl/atools/refs/heads/main/linux_installer.sh | sh
+curl -fsSL https://atools.arnevanlooveren.be/installers/linux.sh | sh
 ```
 
 ## 📚 Documentation
