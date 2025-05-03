@@ -1,6 +1,6 @@
 package main
 
-import "github.com/arne-vl/atools/cmd"
+import "github.com/avl-systems/atools/cmd"
 
 func main() {
 	cmd.Execute()
