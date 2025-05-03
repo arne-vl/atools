@@ -1,4 +1,4 @@
-# `atools` - Arne's CLI Tools
+# `atools` - AVL CLI Tools
 
 ## Building manually
 1. Make sure you have Go installed. You can download it from [golang.org](https://golang.org/dl/).
