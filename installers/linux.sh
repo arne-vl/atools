@@ -4,7 +4,7 @@ set -e # Exit on error
 
 echo "Welcome to the atools linux installer!"
 echo
-LATEST_VERSION=$(curl -s https://api.github.com/repos/arne-vl/atools/tags | grep '"name":' | sed -E 's/.*"v?([^"]+)".*/\1/' | sort -Vr | head -n 1)
+LATEST_VERSION=$(curl -s https://api.github.com/repos/avl-systems/atools/tags | grep '"name":' | sed -E 's/.*"v?([^"]+)".*/\1/' | sort -Vr | head -n 1)
 
 if command -v atools > /dev/null; then
         echo "atools already installed"
@@ -50,7 +50,7 @@ echo "Found matching binary:" $BINARY_NAME
 echo
 
 echo "Downloading binary..."
-DOWNLOAD_URL="https://github.com/arne-vl/atools/releases/download/v${LATEST_VERSION}/${BINARY_NAME}"
+DOWNLOAD_URL="https://github.com/avl-systems/atools/releases/download/v${LATEST_VERSION}/${BINARY_NAME}"
 FILE_PATH="/tmp/${BINARY_NAME}"
 curl -Lso $FILE_PATH $DOWNLOAD_URL
 echo "Finished downloading binary"
