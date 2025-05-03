@@ -23,7 +23,7 @@ var rootCmd = &cobra.Command{
 Version: %s
 
 Arne's CLI Tools contain some fun / useful commands.
-For suggestions: open an issue at https://github.com/arne-vl/atools.
+For suggestions: open an issue at https://github.com/avl-systems/atools.
 
 Created by Arne Van Looveren.`, version),
 }

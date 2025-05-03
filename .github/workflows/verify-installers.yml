@@ -18,13 +18,13 @@ jobs:
     runs-on: ${{ matrix.os }}
     name: Verify linux ${{ matrix.arch }}
 
-    environment:
-      name: installers
-
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Install atools
         run: |
-          curl https://atools.arnevanlooveren.be/installers/linux.sh | sh
+          cat installers/linux.sh | sh
 
       - name: Verify installation
         run: |
@@ -32,7 +32,7 @@ jobs:
 
       - name: Verify Versions
         run: |
-          LATEST_TAG=$(curl -s https://api.github.com/repos/arne-vl/atools/tags | grep '"name":' | sed -E 's/.*"v?([^"]+)".*/\1/' | sort -Vr | head -n 1)
+          LATEST_TAG=$(curl -s https://api.github.com/repos/avl-systems/atools/tags | grep '"name":' | sed -E 's/.*"v?([^"]+)".*/\1/' | sort -Vr | head -n 1)
           ATOOLS_VERSION=$(atools version | sed -n 's/.*: \([0-9.]*\)/\1/p')
 
           if echo $ATOOLS_VERSION | grep -q $LATEST_TAG; then

@@ -1,7 +1,15 @@
 # `atools` - Arne's CLI Tools
-![GitHub Release](https://img.shields.io/github/v/release/arne-vl/atools?color=%237c3aed)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/arne-vl/atools/verify-installers.yml?label=installers%20test)
 
-
-## More info
-Check our [website](https://atools.arnevanlooveren.be).
+## Building manually
+1. Make sure you have Go installed. You can download it from [golang.org](https://golang.org/dl/).
+2. Clone the repository:
+   ```bash
+    git clone
+    cd atools
+   ```
+3. Build the project:
+    ```bash
+    go mod tidy
+    go build
+    go install
+    ```
