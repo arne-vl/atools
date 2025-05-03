@@ -11,20 +11,13 @@ permissions:
 
 jobs:
   verify-linux:
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        arch: [amd64, arm64, 386]
-    runs-on: ${{ matrix.os }}
-    name: Verify linux ${{ matrix.arch }}
+    runs-on: ubuntu-latest
+    name: Verify linux
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
       - name: Install atools
         run: |
-          cat installers/linux.sh | sh
+          curl https://raw.githubusercontent.com/avl-systems/atools/refs/heads/main/linux_installer.sh | sh
 
       - name: Verify installation
         run: |
