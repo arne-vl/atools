@@ -1,6 +1,10 @@
 # Home
 
+![GitHub Release](https://img.shields.io/github/v/release/avl-systems/atools?color=%237c3aed)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/avl-systems/atools/verify-installers.yml?label=installer%20tests)
+
 **atools** is a collection of handy command-line interface(CLI) tools built using Go and [cobra-cli](github.com/spf13/cobra-cli).
+
 
 ## Quick Installation
 ### Linux
