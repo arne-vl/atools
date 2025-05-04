@@ -1,0 +1,51 @@
+site_name: atools - Docs
+
+theme:
+  name: material
+  features:
+    - navigation.expand
+    - toc.integrate
+    - navigation.search.highlight
+    - navigation.search.suggest
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  language: en
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+      primary: purple
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch-outline
+        name: Switch to light mode
+      primary: purple
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/avl-systems/atools
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+nav:
+  - Home: index.md
+  - Commands: commands.md
+  - Configuration:
+      - Blueprints: blueprints.md
