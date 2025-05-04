@@ -1,0 +1,36 @@
+name: Mkdocs
+
+on:
+  workflow_run:
+    workflows: [Create Release]
+    types:
+      - completed
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy Mkdocs
+
+    environment:
+      name: pages
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name : Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+
+      - name: Install mkdocs
+        run: pip install mkdocs mkdocs-material
+
+      - name: Copy installers into docs
+        run: cp -r installers docs/installers
+
+      - name: Deploy to GitHub Pages
+        run: mkdocs gh-deploy --force

@@ -22,10 +22,8 @@ var rootCmd = &cobra.Command{
 
 Version: %s
 
-Arne's CLI Tools contain some fun / useful commands.
-For suggestions: open an issue at https://github.com/avl-systems/atools.
-
-Created by Arne Van Looveren.`, version),
+AVL's CLI Tools contain some fun / useful commands.
+For suggestions: open an issue at https://github.com/avl-systems/atools.`, version),
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
