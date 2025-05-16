@@ -1,4 +1,4 @@
-module github.com/avl-systems/atools
+module github.com/arne-vl/atools
 
 go 1.24.1
 
