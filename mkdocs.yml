@@ -26,7 +26,7 @@ theme:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/avl-systems/atools
+      link: https://github.com/arne-vl/atools
 
 markdown_extensions:
   - pymdownx.highlight:
